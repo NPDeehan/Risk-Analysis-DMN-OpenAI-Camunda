@@ -1,0 +1,277 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "cf76b8f"
+  },
+  "schemaVersion": 16,
+  "id": "Form_3jie42a",
+  "components": [
+    {
+      "text": "### Hawk Risk Analysis needs your investigation Skills\nCheck the details below and change the *Risk Score* based on your findings",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ogql4i",
+        "columns": null
+      },
+      "id": "Field_0pq31cf"
+    },
+    {
+      "computeOn": "change",
+      "label": "Expression",
+      "type": "expression",
+      "layout": {
+        "row": "Row_1lr3uig",
+        "columns": null
+      },
+      "id": "Field_0ickzgq",
+      "key": "trafficLight",
+      "expression": "=if riskRating <=40 then \"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Eo_circle_green_blank.svg/640px-Eo_circle_green_blank.svg.png\"\nelse if riskRating <=99 then \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Yellow_icon.svg/1200px-Yellow_icon.svg.png\"\nelse\n    \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Eo_circle_red_blank.svg/2048px-Eo_circle_red_blank.svg.png\""
+    },
+    {
+      "label": "Current Risk Score",
+      "type": "number",
+      "layout": {
+        "row": "Row_0sudthp",
+        "columns": null
+      },
+      "id": "Field_12rmkfw",
+      "key": "riskRating",
+      "description": "This is a score between 0 and 200",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Image view",
+      "type": "image",
+      "layout": {
+        "row": "Row_0sudthp",
+        "columns": null
+      },
+      "id": "Field_01n7qn1",
+      "source": "=trafficLight"
+    },
+    {
+      "label": "Reason for Final Decision",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_17o5hfd",
+        "columns": 16
+      },
+      "id": "Field_04qp2d6",
+      "key": "reason"
+    },
+    {
+      "text": "{{investigationDetails}}",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0sgbc4o",
+        "columns": null
+      },
+      "id": "Field_1nf9yoo"
+    },
+    {
+      "label": "Separator",
+      "type": "separator",
+      "layout": {
+        "row": "Row_0hbltag",
+        "columns": null
+      },
+      "id": "Field_0dlep48"
+    },
+    {
+      "text": "#### Personal Information",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0k1qtfw",
+        "columns": null
+      },
+      "id": "Field_0aunuwk"
+    },
+    {
+      "label": "Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0yzp87t",
+        "columns": null
+      },
+      "id": "Field_1909nvx",
+      "key": "clientName",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Date of Birth",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_11fzvxt",
+        "columns": null
+      },
+      "id": "Field_0euzfmf",
+      "key": "clientDob",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "label": "Separator",
+      "type": "separator",
+      "layout": {
+        "row": "Row_076u0d3",
+        "columns": null
+      },
+      "id": "Field_0x0k9mb"
+    },
+    {
+      "text": "#### Financial Information",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1oyekc7",
+        "columns": null
+      },
+      "id": "Field_09q71ay"
+    },
+    {
+      "label": "Income Last Year",
+      "type": "number",
+      "layout": {
+        "row": "Row_1ostjl3",
+        "columns": null
+      },
+      "id": "Field_1scctz4",
+      "key": "incomeLastYear",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "label": "Income This Year",
+      "type": "number",
+      "layout": {
+        "row": "Row_1ostjl3",
+        "columns": null
+      },
+      "id": "Field_1cln5kk",
+      "key": "incomeThisYear",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "values": [
+        {
+          "label": "Home",
+          "value": "Home"
+        },
+        {
+          "label": "Car",
+          "value": "Car"
+        },
+        {
+          "label": "Boat",
+          "value": "Boat"
+        },
+        {
+          "label": "Horse",
+          "value": "Horse"
+        },
+        {
+          "label": "Art",
+          "value": "Art"
+        },
+        {
+          "label": "None",
+          "value": "None"
+        }
+      ],
+      "label": "Existing Assets",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_1ugxzh8",
+        "columns": null
+      },
+      "id": "Field_0w530l6",
+      "key": "assets",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "values": [
+        {
+          "label": "Home",
+          "value": "Home"
+        },
+        {
+          "label": "Car",
+          "value": "Car"
+        },
+        {
+          "label": "Boat",
+          "value": "Boat"
+        },
+        {
+          "label": "Horse",
+          "value": "Horse"
+        },
+        {
+          "label": "Art",
+          "value": "Art"
+        },
+        {
+          "label": "Other",
+          "value": "Other"
+        },
+        {
+          "label": "None",
+          "value": "None"
+        }
+      ],
+      "label": "Big Purchases This Year",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_1ugxzh8",
+        "columns": null
+      },
+      "id": "Field_0e1kwxb",
+      "key": "purchases",
+      "description": "What big things did you buy this year",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "label": "Describe \"Other\" Purchase",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_07yclis",
+        "columns": null
+      },
+      "id": "Field_17ksqua",
+      "key": "otherPurchase",
+      "conditional": {
+        "hide": "=not(\"Other\" in purchases)"
+      },
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    }
+  ],
+  "type": "default"
+}

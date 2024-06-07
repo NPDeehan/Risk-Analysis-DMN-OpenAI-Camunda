@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0awiw16" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="cf76b8f" camunda:diagramRelationId="b8cff61a-125b-4d81-b859-785359b1952d" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <decision id="run-risk-rules-0lpa6yf" name="Run Risk Rules">
+    <informationRequirement id="InformationRequirement_1tiu307">
+      <requiredInput href="#InputData_00dozvx" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1raauhk">
+      <requiredInput href="#InputData_04xngw8" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0qz1x36">
+      <requiredInput href="#InputData_13rm81f" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_16w3jq4">
+      <requiredInput href="#InputData_0sy1lxh" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1xja4vm">
+      <requiredInput href="#InputData_1rg0fun" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_146pddc" hitPolicy="COLLECT">
+      <input id="InputClause_19cmrd2" label="Income Last Year">
+        <inputExpression id="LiteralExpression_1tg2iq4" typeRef="number">
+          <text>incomeLastYear</text>
+        </inputExpression>
+      </input>
+      <input id="Input_1" label="Income This Year">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>incomeThisYear</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_03dc4a8" label="Large Purchases">
+        <inputExpression id="LiteralExpression_1sjrf62" typeRef="string">
+          <text>purchases</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_02w0cns">
+          <text>"Home","Car","Boat","Horse","Art","Other"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_09fp3ul" label="Existing Assets">
+        <inputExpression id="LiteralExpression_0wjt3pe" typeRef="string">
+          <text>assets</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0t6mesq">
+          <text>"Home","Car","Boat","Horse","Art","None"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="Description" name="description" typeRef="string" />
+      <output id="OutputClause_04oizxg" label="Score" name="score" typeRef="number" />
+      <rule id="DecisionRule_00a9cea">
+        <description></description>
+        <inputEntry id="UnaryTests_1hxhomd">
+          <text>&lt;= 20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08y43e7">
+          <text>&lt;= 30000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bobtc0">
+          <text>"Home" in purchases</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0slsa4m">
+          <text>"Home" in assets</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1paevcm">
+          <text>"Purchesed a Second home on low Salary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1511o8u">
+          <text>40</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ejiw7g">
+        <inputEntry id="UnaryTests_0jdanfq">
+          <text>&lt;= 20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hibrmf">
+          <text>&gt; 100000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_167fojg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hbs0no">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15ffs5h">
+          <text>"Big increase in income"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17ezotd">
+          <text>40</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hkox47">
+        <inputEntry id="UnaryTests_1rut6sq">
+          <text>&lt;= 20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cc5nf0">
+          <text>&lt;= 30000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09yol0j">
+          <text>"Boat","Horse","Art" in purchases</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ss3tj6">
+          <text>"None" in assets</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qreosv">
+          <text>"Low income and luxury purchases"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yn11bq">
+          <text>80</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ixu4kb">
+        <inputEntry id="UnaryTests_1fmnibq">
+          <text>&gt; 100000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ld47ww">
+          <text>&lt;= 30000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tygcqf">
+          <text>"Home","Car","Boat","Horse","Art" in purchases</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16vsa7j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vzgy4c">
+          <text>"Falling Income and High spending"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00etl24">
+          <text>75</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tg8skf">
+        <inputEntry id="UnaryTests_0esk2jw">
+          <text>&lt;= 20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b3heg9">
+          <text>&lt;= 30000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gs08pu">
+          <text>"Other" in purchases</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12beua2">
+          <text>not("None" in assets)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c0xg8a">
+          <text>"Large Purchase needs checking"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q3dwbj">
+          <text>40</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1puea14">
+        <inputEntry id="UnaryTests_1ud9qbq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rbgnuc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lk50qk">
+          <text>"Other" in purchases</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vmjvk8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08uhyoi">
+          <text>"A large unspecified purchase has beened added to details "</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11w4uyw">
+          <text>20</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zp16p3">
+        <inputEntry id="UnaryTests_0ns6gnb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o6uzc1">
+          <text>&lt;= 70000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m4q5ap">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uf24qe">
+          <text>"Horse", "Boat" in assets</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w01rrv">
+          <text>"Income doesn't appear to support required upkeep of Assets "</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0734qut">
+          <text>40</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vwezst">
+        <inputEntry id="UnaryTests_03v7hkt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1so075b">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1amza7m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dowk5m">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kkzh3i">
+          <text>"Has sent in details on time."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14shzwo">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_00dozvx" name="Income this Year" />
+  <inputData id="InputData_04xngw8" name="Large Purchases" />
+  <inputData id="InputData_13rm81f" name="Existing assets" />
+  <inputData id="InputData_0sy1lxh" name="Age" />
+  <inputData id="InputData_1rg0fun" name="Income last Year" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="run-risk-rules-0lpa6yf">
+        <dc:Bounds height="80" width="180" x="380" y="180" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0jb9gdf" dmnElementRef="InputData_00dozvx">
+        <dc:Bounds height="45" width="125" x="297" y="57" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1xynst7" dmnElementRef="InputData_04xngw8">
+        <dc:Bounds height="45" width="125" x="467" y="38" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0irli33" dmnElementRef="InputData_13rm81f">
+        <dc:Bounds height="45" width="125" x="627" y="77" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1cirr4g" dmnElementRef="InputData_0sy1lxh">
+        <dc:Bounds height="45" width="125" x="697" y="177" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0yh0e1s" dmnElementRef="InformationRequirement_1tiu307">
+        <di:waypoint x="360" y="102" />
+        <di:waypoint x="425" y="160" />
+        <di:waypoint x="425" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1bq1vj7" dmnElementRef="InformationRequirement_1raauhk">
+        <di:waypoint x="530" y="83" />
+        <di:waypoint x="470" y="160" />
+        <di:waypoint x="470" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0bb74hf" dmnElementRef="InformationRequirement_0qz1x36">
+        <di:waypoint x="690" y="122" />
+        <di:waypoint x="515" y="160" />
+        <di:waypoint x="515" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_15acejf" dmnElementRef="InformationRequirement_16w3jq4">
+        <di:waypoint x="697" y="200" />
+        <di:waypoint x="580" y="220" />
+        <di:waypoint x="560" y="220" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0f8324n" dmnElementRef="InputData_1rg0fun">
+        <dc:Bounds height="45" width="125" x="157" y="138" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1y040sd" dmnElementRef="InformationRequirement_1xja4vm">
+        <di:waypoint x="282" y="161" />
+        <di:waypoint x="360" y="220" />
+        <di:waypoint x="380" y="220" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
